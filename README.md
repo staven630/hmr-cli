@@ -9,6 +9,7 @@
 
 2、执行gulp hmr --dir angular目录名
 如：
+> npm i
 > gulp hmr --dir my-app
 
 3、进入angular项目目录，安装@angularclass/hmr
