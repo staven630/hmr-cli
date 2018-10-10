@@ -6,38 +6,33 @@ const runSequence = require('run-sequence')
 const argv = require('minimist')(process.argv.slice(2))
 const colors = require('ansi-colors')
 const log = require('fancy-log')
-
 const DIR_PATH = argv.dir
 const ROOT_PATH = path.resolve(__dirname, `../${DIR_PATH}`)
 const SRC_PATH = `${ROOT_PATH}/src`
 const ENV_PATH = `${SRC_PATH}/environments`
-
+const TPL_PATH = path.resolve(__dirname, './tpl')
 const CONFIG = {
   angular: `${ROOT_PATH}/angular.json`,
-  tsconfig:  `${SRC_PATH}/tsconfig.app.json`,
+  tsconfig: `${SRC_PATH}/tsconfig.app.json`,
   package: `${ROOT_PATH}/package.json`
 }
 
 
-
-const TPL_PATH = path.resolve(__dirname, './tpl')
-
 const fsExistsSync = (path) => {
-  try{
-      fs.accessSync(path, fs.constants.W_OK | fs.constants.R_OK);
-  }catch(e){
-      return false;
+  try {
+    fs.accessSync(path, fs.constants.W_OK | fs.constants.R_OK);
+  } catch (e) {
+    return false;
   }
   return true;
 };
 
-
-gulp.task('envs', () => {  
-    gulp.src(`${TPL_PATH}/environments/**.*ts`)
-      .pipe(gulp.dest(`${ENV_PATH}/`))
+gulp.task('envs', () => {
+  gulp.src(`${TPL_PATH}/environments/**.*ts`)
+    .pipe(gulp.dest(`${ENV_PATH}/`))
 });
 
-gulp.task('addhmr', () => {  
+gulp.task('addhmr', () => {
   gulp.src(`${TPL_PATH}/src/**.*ts`)
     .pipe(gulp.dest(`${SRC_PATH}/`))
 });
