@@ -1,11 +1,11 @@
-# [angular6-hmr](https://github.com/staven630/angular6-hmr.git)
+# [angular-hmr](https://github.com/staven630/angular6-hmr.git)
 &emsp;&emsp;提供angular6以上HMR(热更新)功能
 
 ## 步骤
 1、进入angular项目父级目录内
-> git clone https://github.com/staven630/angular6-hmr.git
+> git clone https://github.com/staven630/angular-hmr.git
 
-&emsp;&emsp;angular6-hmr目录与angular项目(例如：my-app)是同级关系
+&emsp;&emsp;angular-hmr目录与angular项目(例如：my-app)是同级关系
 
 2、执行gulp hmr --dir angular目录名
 如：
