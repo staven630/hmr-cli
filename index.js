@@ -2,11 +2,13 @@ const path = require('path')
 const colors = require('ansi-colors')
 const fs = require('fs')
 const log = require('fancy-log')
+const ora = require('ora')
 const program = require('commander');
 const shell = require('shelljs');
-const resolve  = (dir) => { return path.resolve(__dirname, dir) };
-const output  = (dir) => { return path.resolve(process.cwd(), dir) };
-const PACKAGE = require(output('./package.json'));
+const resolve  = (dir) => { return path.resolve(__dirname, dir) }
+const output  = (dir) => { return path.resolve(process.cwd(), dir) }
+const PACKAGE = require(output('./package.json'))
+const spinner = ora('开始构建……');
 
 program
   .version('0.1.0', '-v, --version')
@@ -15,12 +17,14 @@ program
 program.parse(process.argv);
 
 if (program.init) {
+  spinner.start();
   writeEnvironment();
+  spinner.succeed('写入环境配置成功!');
   writeConfig();
   writeTsConfig();
   writePackage(); 
 } else {
-  log(colors.bold.red('无效的命令'))
+  spinner.fail('无效的命令');
 }
 
 function readFile(src) {
@@ -70,6 +74,7 @@ function writeConfig() {
     "browserTarget": `${PACKAGE.name}:build:hmr`
   }
   fs.writeFileSync(NGJSON_PATH, JSON.stringify(json, null, 2), 'utf8');
+  spinner.succeed('写入angular.json成功!');
 }
 
 function writeTsConfig() {
@@ -77,6 +82,7 @@ function writeTsConfig() {
   let json = JSON.parse(readFile(TSCONFIG_PATH));
   json.compilerOptions.types.push('node')
   fs.writeFileSync(TSCONFIG_PATH, JSON.stringify(json, null, 2), 'utf8');
+  spinner.succeed('写入tsconfig.app.json成功!');
 }
 
 function writePackage() {
@@ -84,7 +90,9 @@ function writePackage() {
   let json = JSON.parse(readFile(PACKAGE_PATH));
   json.scripts.hmr = "ng serve --configuration hmr --open"
   fs.writeFileSync(PACKAGE_PATH, JSON.stringify(json, null, 2), 'utf8');
+  spinner.succeed('写入package.json成功!');
+  spinner.succeed('开始安装@angularclass/hmr');
   shell.exec("npm install --save-dev @angularclass/hmr");
-  log(colors.bold.greenBright('安装hmr成功，请使用npm run hmr代替npm run serve'))
+  spinner.succeed('安装@angularclass/hmr成功!');
   shell.exec("npm run hmr");
 }
