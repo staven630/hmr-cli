@@ -3,7 +3,7 @@
 
 ## 步骤
 ```
-npm i -g hmr
+npm i -g hmr-cli
 ```
 &emsp;&emsp;初始化angular项目,命令行进入该目录
 ```
