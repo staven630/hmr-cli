@@ -1,26 +1,30 @@
 {
-  "name": "angular6-hmr",
+  "name": "hmr-cli",
   "version": "1.0.0",
-  "description": "",
+  "description": "&emsp;&emsp;提供angular6以上HMR(热更新)功能",
   "main": "index.js",
+  "dependencies": {
+    "ansi-colors": "^3.2.1",
+    "commander": "^2.19.0",
+    "fancy-log": "^1.3.2",
+    "shelljs": "^0.8.3"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/staven630/angular6-hmr.git"
+    "url": "git+https://github.com/staven630/hmr-cli.git"
   },
-  "author": "staven630",
+  "keywords": [
+    "angular",
+    "hmr"
+  ],
+  "author": "staven",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/staven630/angular6-hmr/issues"
+    "url": "https://github.com/staven630/hmr-cli/issues"
   },
-  "homepage": "https://github.com/staven630/angular6-hmr#readme",
-  "devDependencies": {
-    "ansi-colors": "^3.1.0",
-    "fancy-log": "^1.3.2",
-    "gulp": "^3.9.1",
-    "minimist": "^1.2.0",
-    "run-sequence": "^2.2.1"
-  }
+  "homepage": "https://github.com/staven630/hmr-cli#readme"
 }

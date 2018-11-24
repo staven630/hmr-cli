@@ -2,25 +2,14 @@
 &emsp;&emsp;提供angular6以上HMR(热更新)功能
 
 ## 步骤
-1、进入angular项目父级目录内
-> git clone https://github.com/staven630/angular-hmr.git
-
-&emsp;&emsp;angular-hmr目录与angular项目(例如：my-app)是同级关系
-
-2、执行gulp hmr --dir angular目录名
-如：
-> npm i
-
-> gulp hmr --dir my-app
-
-3、进入angular项目目录，安装@angularclass/hmr
-> npm install --save-dev @angularclass/hmr --registry https://registry.npm.taobao.org
-
-4、这样angular项目的HMR就配置完成了，执行
-> npm run hmr
-
-注：保持项目名(package.json中的name)与项目目录名一致
-
+```
+npm i -g hmr
+```
+&emsp;&emsp;初始化angular项目,命令行进入该目录
+```
+hmr init
+```
+&emsp;&emsp;npm run hmr启动项目将附带hmr功能。
 
 -------------
 ##### 以下为手动配置步骤
