@@ -1,6 +1,6 @@
 {
   "name": "hmr-cli",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "&emsp;&emsp;提供angular6以上HMR(热更新)功能",
   "main": "index.js",
   "dependencies": {
